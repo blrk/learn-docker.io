@@ -1,9 +1,9 @@
 ### Running a hello-world example
-```
+``` 
 $ docker run hello-world
 ```
 ### Hello World Docker Image
-```
+``` 
 $ docker images
 ```
 ### display any running container
@@ -25,6 +25,7 @@ Status: Downloaded newer image for alpine:latest
 11cc3377c6238dc1568191a975385f7ed13e2447b08e56d4772732a2eb14faa3
 ```
 ### List the running containers
+* To list the container use the following command 
 ```
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
