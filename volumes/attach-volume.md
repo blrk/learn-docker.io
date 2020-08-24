@@ -5,6 +5,7 @@ $ docker volume create app-data
 app-data
 ```
 ### attach a volume 
+``` bash
 $ docker run -it --name demo -v app-data:/mnt alpine /bin/sh
 / # cd /mnt/
 /mnt # touch hello.txt
