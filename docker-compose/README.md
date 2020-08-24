@@ -58,4 +58,46 @@ Going to remove compose-example-1_httpd_1
 Are you sure? [yN] y
 Removing compose-example-1_httpd_1 ... done
 ```
+### mount a local directory that contains custom webapage
+``` bash
+$ mkdir myweb; cd myweb
+vi index.html
+```
+# paste the following html content 
+``` html
+<!DOCTYPE html>
+<html>
+<title>docker-compose with your site </title>
+<body>
+
+<h1>Welcome to RK's home page</h1>
+<p>Devops is cool</p>
+
+</body>
+</html>
+``
+### come out of myweb directory
+```
+cd ..
+### modify the dcoker-compose.yaml file
+```version: '3' 
+  
+# same as 
+# docker run -dit --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:latest
+
+services:
+  httpd:
+    image: httpd:latest
+    volumes:
+      - $PWD/myweb/:/usr/local/apache2/htdocs/
+    ports:
+      - '8080:80'
+```
+### Run it in the background
+``` bash
+$ docker-compose up -d
+Creating compose-example-1_httpd_1 ... done
+```
+
+
 
