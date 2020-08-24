@@ -9,7 +9,6 @@ mkdir webapp
 echo "<h1>Welcome to RK's home page</h1>" > webapp/index.html
 ```
 # Create Dockerfile for Webapp
-* CMD 
 ``` bash
 vi  webapp/Dockerfile
 ```
@@ -29,3 +28,48 @@ WORKDIR /var/www/html
 CMD ["apachectl", "-D", "FOREGROUND"]
 EXPOSE 80
 ```
+### Create Docker Compose File
+* create a docker compose configuration file (docker-compose.yml) file in current directory. This will define all the containers will be used in your current setup.
+
+``` bash
+version: '3'
+services:
+  db:
+     image: mysql
+     container_name: mysql_db
+     restart: always
+     environment:
+        - MYSQL_ROOT_PASSWORD="secret"
+  web:
+    image: apache
+    build: ./webapp
+    depends_on:
+       - db
+    container_name: apache_web
+    restart: always
+    ports:
+      - "8080:80"
+```
+### Build Webapp Image
+* The following command will create an image named apache using Dockerfile and contents from webapp directory.
+``` bash
+$ docker-compose build
+```
+### Launch Docker Containers
+``` bash
+$ docker-compose up -d
+```
+### Update Content of Web Application
+``` bash
+echo "DevOps is cool... Let's enjoy" >> webapp/index.html
+```
+### Rebuild the container
+``` bash
+$ docker-compose build
+$ docker-compose up -d
+```
+
+
+
+
+
