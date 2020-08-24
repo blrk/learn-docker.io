@@ -61,7 +61,7 @@ $ docker-compose up -d
 ```
 ### Update Content of Web Application
 ``` bash
-echo "DevOps is cool... Let's enjoy" >> webapp/index.html
+echo "<h6>DevOps is cool... Let's enjoy</h6>" >> webapp/index.html
 ```
 ### Rebuild the container
 ``` bash
