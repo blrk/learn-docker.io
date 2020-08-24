@@ -99,6 +99,33 @@ services:
 $ docker-compose up -d
 Creating compose-example-1_httpd_1 ... done
 ```
+### stop the container
+``` bash
+$ docker-compose stop
+Stopping compose-example-1_httpd_1 ... done
+```
+### start the stoped service
+``` bash
+$ docker-compose restart
+Restarting compose-example-1_httpd_1 ... done
+```
+### Get the logs
+``` bash
+$ docker-compose logs
+Attaching to compose-example-1_httpd_1
+httpd_1  | AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.19.0.2. Set the 'ServerName' directive globally to suppress this message
+httpd_1  | AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.19.0.2. Set the 'ServerName' directive globally to suppress this message
+httpd_1  | [Mon Aug 24 15:42:14.496867 2020] [mpm_event:notice] [pid 1:tid 140490688894080] AH00489: Apache/2.4.46 (Unix) configured -- resuming normal operations
+httpd_1  | [Mon Aug 24 15:42:14.497304 2020] [core:notice] [pid 1:tid 140490688894080] AH00094: Command line: 'httpd -D FOREGROUND'
+httpd_1  | 172.18.0.1 - - [24/Aug/2020:15:44:51 +0000] "GET / HTTP/1.1" 304 -
+httpd_1  | [Mon Aug 24 15:45:55.943507 2020] [mpm_event:notice] [pid 1:tid 140490688894080] AH00492: caught SIGWINCH, shutting down gracefully
+httpd_1  | AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.19.0.2. Set the 'ServerName' directive globally to suppress this message
+httpd_1  | AH00558: httpd: Could not reliably determine the server's fully qualified domain name, using 172.19.0.2. Set the 'ServerName' directive globally to suppress this message
+httpd_1  | [Mon Aug 24 15:47:40.992874 2020] [mpm_event:notice] [pid 1:tid 139815783609472] AH00489: Apache/2.4.46 (Unix) configured -- resuming normal operations
+httpd_1  | [Mon Aug 24 15:47:40.993045 2020] [core:notice] [pid 1:tid 139815783609472] AH00094: Command line: 'httpd -D FOREGROUND'
+httpd_1  | 172.18.0.1 - - [24/Aug/2020:15:51:14 +0000] "GET / HTTP/1.1" 304 -
+```
+
 
 
 
