@@ -44,11 +44,18 @@ httpd_1  | 172.18.0.1 - - [24/Aug/2020:04:19:35 +0000] "GET / HTTP/1.1" 200 225
 httpd_1  | 172.18.0.1 - - [24/Aug/2020:04:19:36 +0000] "GET /favicon.ico HTTP/1.1" 404 196
 httpd_1  | 172.18.0.1 - - [24/Aug/2020:04:19:46 +0000] "GET /docker-compose.yaml HTTP/1.1" 200 251
 ```
-### list my container
+### list the container
 ``` bash
 $ docker-compose ps
     Name            Command        State    Ports
 -------------------------------------------------
 test1_httpd_1   httpd-foreground   Exit 0       
+```
+### delete a container
+``` bash
+$ docker-compose rm
+Going to remove compose-example-1_httpd_1
+Are you sure? [yN] y
+Removing compose-example-1_httpd_1 ... done
 ```
 
