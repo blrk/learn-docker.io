@@ -66,7 +66,10 @@ echo "DevOps is cool... Let's enjoy" >> webapp/index.html
 ### Rebuild the container
 ``` bash
 $ docker-compose build
+
 $ docker-compose up -d
+mysql_db is up-to-date
+Recreating apache_web ... done
 ```
 
 
