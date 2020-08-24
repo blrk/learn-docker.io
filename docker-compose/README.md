@@ -75,11 +75,12 @@ vi index.html
 
 </body>
 </html>
-``
+```
 ### come out of myweb directory
 ```
 cd ..
-### modify the dcoker-compose.yaml file
+```
+### modify the docker-compose.yaml file
 ```version: '3' 
   
 # same as 
