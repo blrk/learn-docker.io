@@ -125,7 +125,7 @@ httpd_1  | [Mon Aug 24 15:47:40.992874 2020] [mpm_event:notice] [pid 1:tid 13981
 httpd_1  | [Mon Aug 24 15:47:40.993045 2020] [core:notice] [pid 1:tid 139815783609472] AH00094: Command line: 'httpd -D FOREGROUND'
 httpd_1  | 172.18.0.1 - - [24/Aug/2020:15:51:14 +0000] "GET / HTTP/1.1" 304 -
 ```
-
+[Back to Main page](https://github.com/blrk/learn-docker.io/wiki)
 
 
 
