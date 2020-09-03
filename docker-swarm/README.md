@@ -40,9 +40,19 @@ yu8fag60sadzwwawdayiblty9
 overall progress: 1 out of 1 tasks 
 1/1: running   
 verify: Service converged 
-
+```
+### list the service
+```
 $ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
 yu8fag60sadz        mystifying_jones    replicated          1/1                 alpine:latest       
 hoztk2miplj8        relaxed_vaughan     replicated          0/1                 alphine:latest      
+```
+### Check the status
+``` bash
+$ docker service ps mystifying_jones
+ID                  NAME                 IMAGE               NODE          
+      DESIRED STATE       CURRENT STATE           ERROR               PORTS
+sm8bcuccyl98        mystifying_jones.1   alpine:latest       worker2       
+      Running             Running 4 minutes ago 
 ```
