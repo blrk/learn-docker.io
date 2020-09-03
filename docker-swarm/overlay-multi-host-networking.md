@@ -83,3 +83,9 @@ $ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
 ptmnpmdd1uax        psql                replicated          1/1                 postgres:latest     
 ```
+``` bash
+$ docker service ps psql
+ID                  NAME                IMAGE               NODE      DESIRED STATE       CURRENT STATE          ERROR PORTS
+p1jmhv5ybysf        psql.1              postgres:latest     manager2       Running             Running 5 minutes ago  
+```
+
