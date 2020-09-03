@@ -1,4 +1,4 @@
-### What is Docker SWarm?
+### What is Docker Swarm?
 * A Docker Swarm is a group of either physical or virtual machines that are running the Docker application and that have been configured to join together in a cluster
 
 ### Do you have a local setup then do the following steps to start the docker swarm mode
@@ -89,4 +89,20 @@ ID                  NAME                IMAGE               NODE                
 jb2ajsgcz738        pedantic_napier.1   nginx:latest        worker2             Running             Running 8 minutes ago                       
 3aycezwwhfl3        pedantic_napier.2   nginx:latest        manager3            Running             Running 3 minutes ago                       
 rqk1mqaccw3f        pedantic_napier.3   nginx:latest        manager1            Running             Running 3 minutes ago    ```
+* remove one container and see what happends
+``` bash
+* remove a container
+``` bash
+$ docker service stop jb2ajsgcz738
+```
+* check the status of the service
+``` bash
+$ docker service ps pedantic_napier 
+ID                  NAME                    IMAGE               NODE                DESIRED STATE       CURRENT STATE            ERROR                         PORTS
+jb2ajsgcz738        pedantic_napier.1       nginx:latest        worker2             Running             Running 30 minutes ago                                 
+3aycezwwhfl3        pedantic_napier.2       nginx:latest        manager3            Running             Running 26 minutes ago                                 
+orvx93zdlgeb        pedantic_napier.3       nginx:latest        manager1            Running             Running 5 minutes ago                                  
+rqk1mqaccw3f         \_ pedantic_napier.3   nginx:latest        manager1            Shutdown            Failed 5 minutes ago     "task: non-zero exit 
+```
+* Note : Failed container recreated automatically 
 
