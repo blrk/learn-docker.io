@@ -1,6 +1,6 @@
 # Editing Creating and attaching a Volume with container
 ### create a volume
-```
+``` bash
 $ docker volume create app-data
 app-data
 ```
@@ -14,19 +14,20 @@ $ docker run -it --name demo -v app-data:/mnt alpine /bin/sh
 hello.txt   mydile.txt
 /mnt # 
 ```
-```
+``` bash
 exit
 ```
+``` bash
 $ docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
 c9fe13a401c8        alpine              "/bin/sh"           6 minutes ago       Exited (0) 3 minutes ago                       demo
 ```
-```
+``` bash
 $ docker volume ls
 DRIVER              VOLUME NAME
 local               app-data
 ```
-```
+``` bash
 $ docker ps -a
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 [node1] (local) root@192.168.0.28 ~
@@ -70,7 +71,7 @@ Error response from daemon: conflict: unable to delete 5af38fa34234 (must be for
 Error response from daemon: conflict: unable to delete 5af38fa34234 (must be forced) - image is referenced in multiple repositories
 Error response from daemon: conflict: unable to delete a24bb4013296 (cannot be forced) - image has dependent child images
 ```
-```
+``` bash
 $ docker volume rm $(docker volume ls -q)
 app-data
 [node1] (local) root@192.168.0.28 ~
