@@ -114,3 +114,4 @@ $ docker service ls
 ID                  NAME                MODE                REPLICAS       
      IMAGE               PORTS
 ```
+[Back to Main page](https://github.com/blrk/learn-docker.io/wiki)
