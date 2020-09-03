@@ -56,3 +56,37 @@ ID                  NAME                 IMAGE               NODE
 sm8bcuccyl98        mystifying_jones.1   alpine:latest       worker2       
       Running             Running 4 minutes ago 
 ```
+### List the container
+``` bash
+$ docker container ls
+```
+### Update the docker service
+* create a nginx service
+``` bash
+$ docker service create nginx 
+h2dhndtdr3zufn76izbv04a8a
+overall progress: 1 out of 1 tasks 
+1/1: running   
+verify: Service converged 
+
+$ docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS      
+h2dhndtdr3zu        pedantic_napier     replicated          1/1  
+```
+* Update the docker service
+``` bash
+$ docker service update pedantic_napier --replicas 3
+pedantic_napier
+overall progress: 3 out of 3 tasks 
+1/3: running   
+2/3: running   
+3/3: running   
+verify: Service converged 
+```
+``` bash
+$ docker service ps pedantic_napier
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
+jb2ajsgcz738        pedantic_napier.1   nginx:latest        worker2             Running             Running 8 minutes ago                       
+3aycezwwhfl3        pedantic_napier.2   nginx:latest        manager3            Running             Running 3 minutes ago                       
+rqk1mqaccw3f        pedantic_napier.3   nginx:latest        manager1            Running             Running 3 minutes ago    ```
+
