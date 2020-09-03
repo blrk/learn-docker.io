@@ -105,4 +105,12 @@ orvx93zdlgeb        pedantic_napier.3       nginx:latest        manager1        
 rqk1mqaccw3f         \_ pedantic_napier.3   nginx:latest        manager1            Shutdown            Failed 5 minutes ago     "task: non-zero exit 
 ```
 * Note : Failed container recreated automatically 
+### Delete a service
+``` bash
+$ docker service rm pedantic_napier 
+pedantic_napier
 
+$ docker service ls
+ID                  NAME                MODE                REPLICAS       
+     IMAGE               PORTS
+```
