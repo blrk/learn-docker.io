@@ -5,7 +5,6 @@
 ``` bash
 docker swarm init 
 docker node ls
-
 ```
 ### No local setup do the following setup 
 * Open https://labs.play-with-docker.com/
@@ -42,7 +41,7 @@ overall progress: 1 out of 1 tasks
 verify: Service converged 
 ```
 ### list the service
-```
+``` bash
 $ docker service ls
 ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
 yu8fag60sadz        mystifying_jones    replicated          1/1                 alpine:latest       
@@ -90,8 +89,6 @@ jb2ajsgcz738        pedantic_napier.1   nginx:latest        worker2             
 3aycezwwhfl3        pedantic_napier.2   nginx:latest        manager3            Running             Running 3 minutes ago                       
 rqk1mqaccw3f        pedantic_napier.3   nginx:latest        manager1            Running             Running 3 minutes ago    ```
 * remove one container and see what happends
-``` bash
-* remove a container
 ``` bash
 $ docker service stop jb2ajsgcz738
 ```
