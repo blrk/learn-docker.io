@@ -113,4 +113,5 @@ h2dhndtdr3zu        pedantic_napier     replicated          1/1
 $ docker service ps h2d
 ```
 * Note that the failed container recreated in another node
+
 [Back to Main page](https://github.com/blrk/learn-docker.io/wiki)
