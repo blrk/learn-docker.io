@@ -102,13 +102,15 @@ orvx93zdlgeb        pedantic_napier.3       nginx:latest        manager1        
 rqk1mqaccw3f         \_ pedantic_napier.3   nginx:latest        manager1            Shutdown            Failed 5 minutes ago     "task: non-zero exit 
 ```
 * Note : Failed container recreated automatically 
-### Delete a service
+### Delete a node that run one of the container
+* In the online playground delete node manager 3
+* then run the following commands
 ``` bash
-$ docker service rm pedantic_napier 
-pedantic_napier
-
 $ docker service ls
-ID                  NAME                MODE                REPLICAS       
-     IMAGE               PORTS
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS      
+h2dhndtdr3zu        pedantic_napier     replicated          1/1  
+
+$ docker service ps h2d
 ```
+* Note that the failed container recreated in another node
 [Back to Main page](https://github.com/blrk/learn-docker.io/wiki)
