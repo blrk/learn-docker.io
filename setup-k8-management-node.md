@@ -42,11 +42,11 @@
 
 #### create an S3 bucket
    ```sh
-    aws s3 mb s3://demo.k8s.valaxy.net
+    aws s3 mb s3://demo.k8s.karunya.edu
    ```
 #### Expose environment variable:
    ```sh
-    export KOPS_STATE_STORE=s3://demo.k8s.valaxy.net
+    export KOPS_STATE_STORE=s3://demo.k8s.karunya.edu
    ```
 
 #### Create sshkeys before creating cluster
@@ -56,12 +56,12 @@
 
 #### Create kubernetes cluster definitions on S3 bucket
    ```sh
-   kops create cluster --cloud=aws --zones=ap-south-1b --name=demo.k8s.valaxy.net --dns-zone=valaxy.net --dns private 
+   kops create cluster --cloud=aws --zones=ap-south-1b --name=demo.k8s.karunya.edu --dns-zone=karunya.edu --dns private 
     ```
 
 #### Create kubernetes cluser
     ```sh
-    kops update cluster demo.k8s.valaxy.net --yes
+    kops update cluster demo.k8s.karunya.edu --yes
     ```
 
 #### Validate your cluster
@@ -76,14 +76,14 @@
 
 #### To delete cluster
     ```sh
-     kops delete cluster demo.k8s.valaxy.net --yes
+     kops delete cluster demo.k8s.karunya.edu --yes
     ```
    
 ### Deploying Nginx pods on Kubernetes
 #### Deploying Nginx Container
     ```sh
     kubectl run sample-nginx --image=nginx --replicas=2 --port=80
-    # kubectl run simple-devops-project --image=yankils/simple-devops-image --replicas=2 --port=8080
+    # kubectl run simple-devops-project --image=blrk/devops-website-image --replicas=2 --port=8080
     kubectl get pods
     kubectl get deployments
    ```
@@ -91,6 +91,6 @@
 #### Expose the deployment as service. This will create an ELB in front of those 2 containers and allow us to publicly access them.
    ```sh
    kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
-   # kubectl expose deployment simple-devops-project --port=8080 --type=LoadBalancer
+   # kubectl expose deployment devops-website-image --port=8080 --type=LoadBalancer
    kubectl get services -o wide
    ```
