@@ -4,6 +4,10 @@
 * type : t2.micro
 * Tag : Name; k8-management-server
 #### Basic Configuration
+* Login as root user
+``` bash
+sudo su -
+```
 * update the instance
 ``` bash
 apt update -y
