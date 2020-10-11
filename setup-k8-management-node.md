@@ -84,8 +84,13 @@ aws s3 mb s3://demo.k8s.karunya.edu
 ssh-keygen
 ```
 #### Create kubernetes cluster definitions on S3 bucket
+* find the zone of your instance
+* From the terminal of your k8-management-server run the following command
 ``` bash
-kops create cluster --cloud=aws --zones=ap-south-1b --name=demo.k8s.karunya.edu --dns-zone=karunya.edu --dns private 
+curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone
+```
+``` bash
+kops create cluster --cloud=aws --zones=ap-south-1a --name=demo.k8s.karunya.edu --dns-zone=karunya.edu --dns private 
 ```
 #### Create kubernetes cluser
 ``` bash
