@@ -19,23 +19,19 @@ apt install python -y
 ``` bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
-./aws/install -i /usr/local/aws -b /usr/local/bin/aws
+./aws/install
 ```
+* Verify the installation
+``` bash
+aws --version
+aws-cli/2.0.56 Python/3.7.3 Linux/5.3.0-1035-aws exe/x86_64.ubuntu.18
 ```
-    sudo apt-get update
-    
-    apt install unzip python
-    unzip awscli-bundle.zip
-    #sudo apt-get install unzip - if you dont have unzip in your system
-    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-    ```
-
 #### Install kubectl on ubuntu instance
-   ```sh
-   curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-    chmod +x ./kubectl
-    sudo mv ./kubectl /usr/local/bin/kubectl
-   ```
+``` bash
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
 
 #### Install kops on ubuntu instance
    ```sh
