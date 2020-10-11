@@ -1,8 +1,9 @@
-## Setup Kubernetes (K8s) Cluster on AWS
-
-
-### Create Ubuntu EC2 instance
-### Basic Configuration
+### setup Kubernetes (K8s) Cluster on AWS
+#### Create Ubuntu EC2 instance
+* create instance : ubuntu 18 image
+* type : t2.micro
+* Tag : Name; k8-management-server
+#### Basic Configuration
 * update the instance
 ``` bash
 apt update -y
@@ -34,76 +35,85 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 #### Install kops on ubuntu instance
 ``` bash
- curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
-    chmod +x kops-linux-amd64
-    sudo mv kops-linux-amd64 /usr/local/bin/kops
+curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops-linux-amd64
+sudo mv kops-linux-amd64 /usr/local/bin/kops
 ```
-#### Create an IAM user/role  with Route53, EC2, IAM and S3 full access
+#### Create an IAM user and role and attach to the instance
+* Open AWS console
+* click on Services
+* Select the IAM service
+* Click on Roles
+* Select EC2
+* In the Filter policies : Search the following
+* AmazonEC2FullAccess : select it
+* AmazonS3FullAccess : select it
+* AmazonRoute53FullAccess : select it
+* IAMFullAccess : Select it
+* Click in Next Tags button
+* In the Add tags
+* Key : Name
+* value : k8-management-server-role
+* Click Next: Review button
+* Give the role name : k8-management-server-role
+* click on Create a role 
+* Move to the EC2 Running isntances dashboard
+* select the : k8-management-server server and attach the role
 
 #### Attach IAM role to ubuntu instance
-   ```sh
-   # Note: If you create IAM user with programmatic access then provide Access keys. Otherwise region information is enough
-   aws configure
-    ```
-
+``` bash
+# Note: If you create IAM user with programmatic access then provide Access keys. Otherwise region information is enough
+aws configure
+```
 #### Create a Route53 private hosted zone (you can create Public hosted zone if you have a domain)
-   ```sh
-   Routeh53 --> hosted zones --> created hosted zone  
-   Domain Name: karunya.edu
-   Type: Private hosted zone for Amzon VPC
-   ```
-
+``` bash
+Routeh53 --> hosted zones --> created hosted zone  
+Domain Name: karunya.edu
+Type: Private hosted zone for Amzon VPC
+```
 #### create an S3 bucket
-   ```sh
-    aws s3 mb s3://demo.k8s.karunya.edu
-   ```
+``` bash
+aws s3 mb s3://demo.k8s.karunya.edu
+```
 #### Expose environment variable:
-   ```sh
-    export KOPS_STATE_STORE=s3://demo.k8s.karunya.edu
-   ```
-
+``` bash
+ export KOPS_STATE_STORE=s3://demo.k8s.karunya.edu
+ ```
 #### Create sshkeys before creating cluster
-   ```sh
-    ssh-keygen
-   ```
-
+``` bash
+ssh-keygen
+```
 #### Create kubernetes cluster definitions on S3 bucket
-   ```sh
-   kops create cluster --cloud=aws --zones=ap-south-1b --name=demo.k8s.karunya.edu --dns-zone=karunya.edu --dns private 
-    ```
-
+``` bash
+kops create cluster --cloud=aws --zones=ap-south-1b --name=demo.k8s.karunya.edu --dns-zone=karunya.edu --dns private 
+```
 #### Create kubernetes cluser
-    ```sh
-    kops update cluster demo.k8s.karunya.edu --yes
-    ```
-
+``` bash
+kops update cluster demo.k8s.karunya.edu --yes
+```
 #### Validate your cluster
-     ```sh
-      kops validate cluster
-    ```
-
+``` bash
+kops validate cluster
+```
 #### To list nodes
-   ```sh
-   kubectl get nodes
-   ```
-
+``` bash
+kubectl get nodes
+```
 #### To delete cluster
-    ```sh
-     kops delete cluster demo.k8s.karunya.edu --yes
-    ```
-   
+``` bash
+kops delete cluster demo.k8s.karunya.edu --yes
+```
 ### Deploying Nginx pods on Kubernetes
 #### Deploying Nginx Container
-    ```sh
-    kubectl run sample-nginx --image=nginx --replicas=2 --port=80
-    # kubectl run simple-devops-project --image=blrk/devops-website-image --replicas=2 --port=8080
-    kubectl get pods
-    kubectl get deployments
-   ```
-
+``` bash
+kubectl run sample-nginx --image=nginx --replicas=2 --port=80
+# kubectl run simple-devops-project --image=blrk/devops-website-image --replicas=2 --port=8080
+kubectl get pods
+kubectl get deployments
+```
 #### Expose the deployment as service. This will create an ELB in front of those 2 containers and allow us to publicly access them.
-   ```sh
-   kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
-   # kubectl expose deployment devops-website-image --port=8080 --type=LoadBalancer
-   kubectl get services -o wide
-   ```
+``` bash
+kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
+# kubectl expose deployment devops-website-image --port=8080 --type=LoadBalancer
+kubectl get services -o wide
+```
