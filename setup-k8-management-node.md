@@ -104,6 +104,30 @@ kops update cluster demo.k8s.karunya.edu --yes
 ``` bash
 kops validate cluster
 ```
+* Note : You get the following error if your cluster creation is not completed
+``` 
+Validation failed: cluster not yet healthy
+```
+* After Cluster creation is done, run the following command
+``` bash
+kops validate cluster
+Using cluster from kubectl context: demo.k8s.karunya.edu
+
+Validating cluster demo.k8s.karunya.edu
+
+INSTANCE GROUPS
+NAME			ROLE	MACHINETYPE	MIN	MAX	SUBNETS
+master-ap-south-1b	Master	t3.medium	1	1	ap-south-1b
+nodes			Node	t3.medium	2	2	ap-south-1b
+
+NODE STATUS
+NAME						ROLE	READY
+ip-172-20-58-240.ap-south-1.compute.internal	master	True
+ip-172-20-61-135.ap-south-1.compute.internal	node	True
+ip-172-20-61-2.ap-south-1.compute.internal	node	True
+
+Your cluster demo.k8s.karunya.edu is ready
+```
 #### To list nodes
 ``` bash
 kubectl get nodes
