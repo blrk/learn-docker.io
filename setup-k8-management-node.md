@@ -132,6 +132,14 @@ Your cluster demo.k8s.karunya.edu is ready
 ``` bash
 kubectl get nodes
 ```
+* output
+``` bash
+kubectl get nodes
+NAME                                           STATUS   ROLES    AGE   VERSION
+ip-172-20-58-240.ap-south-1.compute.internal   Ready    master   14m   v1.18.9
+ip-172-20-61-135.ap-south-1.compute.internal   Ready    node     12m   v1.18.9
+ip-172-20-61-2.ap-south-1.compute.internal     Ready    node     12m   v1.18.9
+```
 #### To delete cluster
 ``` bash
 kops delete cluster demo.k8s.karunya.edu --yes
