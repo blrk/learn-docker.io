@@ -43,7 +43,7 @@ curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://
 chmod +x kops-linux-amd64
 sudo mv kops-linux-amd64 /usr/local/bin/kops
 ```
-#### Create an IAM user and role and attach to the instance
+#### Create an IAM role and attach to the instance
 * Open AWS console
 * click on Services
 * Select the IAM service
