@@ -144,6 +144,10 @@ ip-172-20-61-2.ap-south-1.compute.internal     Ready    node     12m   v1.18.9
 ``` bash
 kops delete cluster demo.k8s.karunya.edu --yes
 ```
+* Suppose, the above command is not working use the following command
+``` bash
+kops delete cluster --name=demo.k8s.karunya.edu --state=s3://demo.k8s.karunya.edu --yes
+```
 ### Deploying Nginx pods on Kubernetes
 #### Deploying Nginx Container
 ``` bash
