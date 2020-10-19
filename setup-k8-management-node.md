@@ -151,7 +151,10 @@ kops delete cluster --name=demo.k8s.karunya.edu --state=s3://demo.k8s.karunya.ed
 ### Deploying Nginx pods on Kubernetes
 #### Deploying Nginx Container
 ``` bash
+# Depricated
 kubectl run sample-nginx --image=nginx --replicas=2 --port=80
+# Use this instead
+kubectl run sample-nginx --image=nginx --port=80
 # kubectl run simple-devops-project --image=blrk/devops-website-image --replicas=2 --port=8080
 kubectl get pods
 kubectl get deployments
