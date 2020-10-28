@@ -96,6 +96,13 @@ curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone
 ``` bash
 kops create cluster --cloud=aws --zones=ap-south-1a --name=demo.k8s.karunya.edu --dns-zone=karunya.edu --dns private 
 ```
+#### How to modify the cluster configuration before creating the cluster
+``` bash
+ * list clusters with: kops get cluster
+ * edit this cluster with: kops edit cluster demo.k8s.karunya.edu
+ * edit your node instance group: kops edit ig --name=demo.k8s.karunya.edu nodes
+ * edit your master instance group: kops edit ig --name=demo.k8s.karunya.edu master-ap-south-1b
+```
 #### Create kubernetes cluser
 ``` bash
 kops update cluster demo.k8s.karunya.edu --yes
