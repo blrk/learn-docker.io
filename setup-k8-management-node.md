@@ -169,3 +169,4 @@ kubectl expose deployment sample-nginx --port=80 --type=LoadBalancer
 # kubectl expose deployment devops-website-image --port=8080 --type=LoadBalancer
 kubectl get services -o wide
 ```
+[Back to the mainpage](https://github.com/blrk/learn-devops.io/wiki)
